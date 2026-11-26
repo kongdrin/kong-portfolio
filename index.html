@@ -1,17 +1,16 @@
 <title>공희성 Portfolio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 /* Layout: a print-production sheet come alive. Every medium she ships (POP, X-banner, DID, ad, sign)
    floats as a 3D proof around a registration mark; the page reacts to the pointer like a light table. */
 :root{
   --paper:#EEF0EE; --sheet:#F8F9F8; --ink:#15171A; --muted:#5D636B; --rule:#C9CDCF;
   --accent:#2438D6; --accent-ink:#FFFFFF; --ph:#E2E5E4; --ph-line:#B7BCBE;
-  --display:"Archivo","IBM Plex Sans KR",system-ui,sans-serif;
-  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --display:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --body:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"Pretendard Variable",Pretendard,system-ui,sans-serif;
   --step-0:1rem; --step-1:1.2rem; --step-2:1.6rem; --step-3:2.4rem;
   --max:1240px;
 }
@@ -60,7 +59,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 80%,transparent);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.top .mark{font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 110;letter-spacing:.02em;text-decoration:none;display:inline-block}
+.top .mark{font-family:var(--display);font-weight:800;letter-spacing:.01em;text-decoration:none;display:inline-block}
 .top nav{display:flex;gap:6px;flex-wrap:wrap}
 .top nav a{text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:999px;display:inline-block;transition:color .2s,background .2s}
 .top nav a:hover{color:var(--ink);background:var(--sheet)}
@@ -79,7 +78,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .bigname{display:flex;flex-wrap:wrap;margin-top:18px;font-family:var(--display);font-weight:700;
   font-size:clamp(2.4rem,10vw,8.8rem);line-height:.9;letter-spacing:-.01em;color:var(--ink);user-select:none}
 .bigname .sp{width:.28em}
-.bigname span.l{display:inline-block;font-variation-settings:"wdth" 92,"wght" 640;will-change:font-variation-settings}
+.bigname span.l{display:inline-block;font-variation-settings:"wght" 700;will-change:font-variation-settings}
 .bigname .word{display:inline-flex;white-space:nowrap}
 .bigname .word:first-child{color:var(--accent)}
 .hero .lede{margin-top:28px;font-size:var(--step-1);max-width:34em;background:color-mix(in srgb,var(--paper) 70%,transparent);backdrop-filter:blur(2px)}
@@ -98,8 +97,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .brands{border-bottom:1px solid var(--rule);overflow:hidden;padding-block:22px;background:var(--sheet)}
 .track{display:flex;width:max-content;will-change:transform}
 .track .set{display:flex;gap:56px;padding-right:56px;align-items:baseline}
-.track .b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 120;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:.01em;white-space:nowrap;transition:color .2s,font-variation-settings .35s}
-.track .b:hover{color:var(--accent);font-variation-settings:"wdth" 70}
+.track .b{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:-.01em;white-space:nowrap;transition:color .2s,font-weight .35s}
+.track .b:hover{color:var(--accent);font-weight:300}
 .track .b small{font-family:var(--body);font-weight:500;font-size:.8rem;color:var(--muted);margin-left:8px;letter-spacing:0}
 .track .star{color:var(--accent);font-family:var(--mono);font-size:1.2rem}
 @media (prefers-reduced-motion: reduce){.track{width:auto}.track .set{flex-wrap:wrap;gap:14px 40px;padding-inline:16px}.track .set[aria-hidden]{display:none}}
@@ -108,7 +107,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 section.block{padding-block:clamp(64px,9vw,112px);position:relative}
 .sec-head{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:48px}
 @media (min-width:900px){.sec-head{grid-template-columns:1fr 1.4fr;align-items:end}}
-.sec-head h2{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 120;font-size:var(--step-3);line-height:1;text-transform:uppercase}
+.sec-head h2{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:var(--step-3);line-height:1;text-transform:uppercase}
 .sec-head h2 .ko{display:block;font-family:var(--body);text-transform:none;font-size:.45em;font-weight:600;letter-spacing:0;color:var(--muted);margin-top:10px}
 .sec-head p{color:var(--muted);max-width:40em}
 
@@ -121,8 +120,8 @@ section.block{padding-block:clamp(64px,9vw,112px);position:relative}
 .tag{display:inline-flex;gap:8px;align-items:center;color:var(--accent)}
 .tag i{font-style:normal;color:var(--muted)}
 .case h3{font-size:var(--step-2);line-height:1.3;font-weight:700;letter-spacing:-.015em}
-.case h3 .brand{display:block;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 125;font-size:clamp(2.4rem,6vw,4.2rem);line-height:.95;margin-bottom:12px;text-transform:uppercase;transition:font-variation-settings .6s cubic-bezier(.2,.8,.2,1),color .3s}
-.case:hover h3 .brand{font-variation-settings:"wdth" 64;color:var(--accent)}
+.case h3 .brand{display:block;font-family:var(--display);font-weight:800;letter-spacing:-.025em;font-size:clamp(2.4rem,6vw,4.2rem);line-height:.95;margin-bottom:12px;text-transform:uppercase;transition:font-weight .6s cubic-bezier(.2,.8,.2,1),color .3s}
+.case:hover h3 .brand{font-weight:300;color:var(--accent)}
 .facts{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;padding-top:18px;border-top:1px solid var(--rule)}
 .facts dt{color:var(--muted)}
 .facts dd{margin:0}
@@ -158,7 +157,7 @@ table.matrix{border-collapse:collapse;width:100%;min-width:720px;font-size:.92re
 .matrix th,.matrix td{padding:14px 16px;border-bottom:1px solid var(--rule);text-align:center;transition:background .2s}
 .matrix thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;font-weight:500;color:var(--muted);text-transform:uppercase;vertical-align:bottom}
 .matrix thead th small{display:block;font-family:var(--body);text-transform:none;letter-spacing:0;font-size:.78rem;color:var(--ink);font-weight:600;margin-top:2px}
-.matrix tbody th{text-align:left;font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 112;white-space:nowrap}
+.matrix tbody th{text-align:left;font-family:var(--display);font-weight:700;white-space:nowrap}
 .matrix tbody th small{display:block;font-family:var(--body);font-weight:400;font-size:.76rem;color:var(--muted)}
 .matrix tr:last-child th,.matrix tr:last-child td{border-bottom:0}
 .matrix tbody tr:hover th,.matrix tbody tr:hover td{background:color-mix(in srgb,var(--accent) 8%,transparent)}
@@ -588,22 +587,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     const wEl = document.createElement('span'); wEl.className = 'word'; wEl.setAttribute('aria-hidden','true');
     for (const ch of word){
       const s = document.createElement('span'); s.className = 'l'; s.textContent = ch; wEl.appendChild(s);
-      letters.push({el:s, w:92, g:640});
+      letters.push({el:s, g:700});
     }
     big.appendChild(wEl);
   });
   function nameFrame(t){
     letters.forEach((L,i) => {
-      let tw = 92 + Math.sin(t*0.0012 + i*.6) * (reduce ? 0 : 10), tg = 640;
+      let tg = 700 + Math.sin(t*0.0012 + i*.6) * (reduce ? 0 : 60);
       if (mouse.active && fine){
         const r = L.el.getBoundingClientRect();
         const d = Math.hypot(mouse.x - (r.left + r.width/2), mouse.y - (r.top + r.height/2));
         const f = clamp(1 - d/320, 0, 1);
-        tw = 92 - f * 30 + f * f * 63; // narrow at the edge of reach, widest under the cursor
-        tg = 640 + f * 160;
+        tg = 700 - f * 300 + f * f * 500; // lighter at the edge of reach, heaviest under the cursor
       }
-      L.w = lerp(L.w, tw, .14); L.g = lerp(L.g, tg, .14);
-      L.el.style.fontVariationSettings = `"wdth" ${L.w.toFixed(1)}, "wght" ${L.g.toFixed(0)}`;
+      L.g = lerp(L.g, tg, .14);
+      L.el.style.fontVariationSettings = `"wght" ${L.g.toFixed(0)}`;
     });
   }
 
@@ -703,13 +701,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       });
       // labels
       const accent = css('--accent');
-      g.fillStyle = accent; g.font = `600 ${Math.round(m*.06)}px "IBM Plex Mono", monospace`;
+      g.fillStyle = accent; g.font = `600 ${Math.round(m*.06)}px "Pretendard Variable", Pretendard, sans-serif`;
       g.textBaseline = 'top'; g.fillText('RATIO ' + it[3], pad*1.5, pad*1.5);
-      let fs = m * .2; g.font = `600 ${Math.round(fs)}px "IBM Plex Mono", monospace`;
-      while (g.measureText(it[0]).width > cw - pad*3 && fs > 10){ fs -= 2; g.font = `600 ${Math.round(fs)}px "IBM Plex Mono", monospace`; }
+      let fs = m * .2; g.font = `600 ${Math.round(fs)}px "Pretendard Variable", Pretendard, sans-serif`;
+      while (g.measureText(it[0]).width > cw - pad*3 && fs > 10){ fs -= 2; g.font = `600 ${Math.round(fs)}px "Pretendard Variable", Pretendard, sans-serif`; }
       g.fillStyle = css('--ink'); g.textBaseline = 'alphabetic';
       g.fillText(it[0], pad*1.5, ch - pad*1.5 - m*.1);
-      g.fillStyle = css('--muted'); g.font = `500 ${Math.round(m*.07)}px "IBM Plex Sans KR", sans-serif`;
+      g.fillStyle = css('--muted'); g.font = `500 ${Math.round(m*.07)}px "Pretendard Variable", Pretendard, sans-serif`;
       g.fillText(it[1], pad*1.5, ch - pad*1.5);
       const tex = new THREE.CanvasTexture(c); tex.anisotropy = 4;
       return tex;
