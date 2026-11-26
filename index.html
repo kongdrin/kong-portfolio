@@ -1,5 +1,29 @@
-<title>공희성 Portfolio</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>공희성 | 브랜딩 디자이너 포트폴리오</title>
+<meta name="description" content="공식 수입 브랜드가 한국에 처음 놓이는 순간을 디자인하는 브랜딩 디자이너 공희성의 포트폴리오. DJI, 핫셀블라드, 가민, 아르케의 로고·런칭쇼·POP·광고·라이브커머스 작업.">
+<meta name="author" content="공희성">
+<meta name="theme-color" content="#EEF0EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://kongdrin.github.io/kong-portfolio/">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공희성 Portfolio">
+<meta property="og:title" content="공희성 | 브랜딩 디자이너 포트폴리오">
+<meta property="og:description" content="공식 수입 브랜드가 한국에 처음 놓이는 순간을 디자인하는 브랜딩 디자이너 공희성의 포트폴리오. DJI, 핫셀블라드, 가민, 아르케의 로고·런칭쇼·POP·광고·라이브커머스 작업.">
+<meta property="og:url" content="https://kongdrin.github.io/kong-portfolio/">
+<meta property="og:image" content="https://kongdrin.github.io/kong-portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KONG HEESUNG 브랜딩 디자이너 포트폴리오">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="공희성 | 브랜딩 디자이너 포트폴리오">
+<meta name="twitter:description" content="공식 수입 브랜드가 한국에 처음 놓이는 순간을 디자인하는 브랜딩 디자이너 공희성의 포트폴리오. DJI, 핫셀블라드, 가민, 아르케의 로고·런칭쇼·POP·광고·라이브커머스 작업.">
+<meta name="twitter:image" content="https://kongdrin.github.io/kong-portfolio/images/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
@@ -8,7 +32,7 @@
    floats as a 3D proof around a registration mark; the page reacts to the pointer like a light table. */
 :root{
   --paper:#EEF0EE; --sheet:#F8F9F8; --ink:#15171A; --muted:#5D636B; --rule:#C9CDCF;
-  --accent:#2438D6; --accent-ink:#FFFFFF; --ph:#E2E5E4; --ph-line:#B7BCBE;
+  --accent:#2438D6; --accent-ink:#FFFFFF; --accent-inv:#8D9BFF; --ph:#E2E5E4; --ph-line:#B7BCBE;
   --display:"Archivo","IBM Plex Sans KR",system-ui,sans-serif;
   --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -18,17 +42,17 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --paper:#0F1114; --sheet:#171A1E; --ink:#E9ECEB; --muted:#9AA1A8; --rule:#2B2F35;
-    --accent:#7C8CFF; --accent-ink:#0D0F14; --ph:#1D2126; --ph-line:#3A4047; color-scheme:dark;
+    --accent:#7C8CFF; --accent-ink:#0D0F14; --accent-inv:#2438D6; --ph:#1D2126; --ph-line:#3A4047; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --paper:#0F1114; --sheet:#171A1E; --ink:#E9ECEB; --muted:#9AA1A8; --rule:#2B2F35;
-  --accent:#7C8CFF; --accent-ink:#0D0F14; --ph:#1D2126; --ph-line:#3A4047; color-scheme:dark;
+  --accent:#7C8CFF; --accent-ink:#0D0F14; --accent-inv:#2438D6; --ph:#1D2126; --ph-line:#3A4047; color-scheme:dark;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.7;
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.7;
   word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -36,6 +60,9 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 @media (min-width:720px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
 .mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
 h1,h2,h3,h4{text-wrap:balance;margin:0}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--accent);color:var(--accent-ink);padding:10px 16px;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
 p{margin:0}
 
 /* custom cursor (fine pointers only) */
@@ -156,7 +183,7 @@ section.block{padding-block:clamp(64px,9vw,112px);position:relative}
 @media (max-width:640px){.w4,.w3{grid-column:span 6}.w2{grid-column:span 3}}
 
 /* index matrix */
-.matrix-wrap{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+.matrix-wrap{position:relative;overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
 table.matrix{border-collapse:collapse;width:100%;min-width:720px;font-size:.92rem}
 .matrix th,.matrix td{padding:14px 16px;border-bottom:1px solid var(--rule);text-align:center;transition:background .2s}
 .matrix thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;font-weight:500;color:var(--muted);text-transform:uppercase;vertical-align:bottom}
@@ -195,8 +222,8 @@ table.matrix{border-collapse:collapse;width:100%;min-width:720px;font-size:.92re
 @media (min-width:860px){.flow{grid-template-columns:repeat(4,1fr)}}
 .flow li{list-style:none;padding:22px;border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);
   background:color-mix(in srgb,var(--ink) 70%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;gap:10px;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s}
-.flow li:hover{transform:translateY(-6px);border-color:var(--accent)}
-.flow .mono{color:var(--accent)}
+.flow li:hover{transform:translateY(-6px);border-color:var(--accent-inv)}
+.flow .mono{color:var(--accent-inv)}
 .flow h4{font-size:var(--step-1)}
 .flow p{color:color-mix(in srgb,var(--paper) 80%,transparent);font-size:.95rem}
 .note{margin-top:36px;font-size:.9rem;color:color-mix(in srgb,var(--paper) 62%,transparent)}
@@ -215,7 +242,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
 </style>
+</head>
+<body>
 
+<a class="skip" href="#top">본문으로 건너뛰기</a>
 <div class="progress" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"><div class="c-ring"><span class="c-label"></span></div><div class="c-dot"></div></div>
 
@@ -240,7 +270,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div class="eyebrow mono">Brand Designer · 7 Years</div>
         <h1>공식 수입 브랜드가<br>한국에 처음 놓이는 순간을<br>디자인합니다.</h1>
       </div>
-      <div class="bigname" id="bigname" aria-label="Kong Heesung">KONG HEESUNG</div>
+      <div class="bigname" id="bigname" role="img" aria-label="Kong Heesung">KONG HEESUNG</div>
       <div class="hero-text">
         <p class="lede">DJI, 핫셀블라드, 가민, 아르케를 국내에 소개하며 로고와 런칭쇼부터 백화점 POP, 라이브커머스 송출 배너, 네이버·메타 광고 소재까지 <em>한 브랜드의 모든 접점</em>을 혼자 끝까지 맡아 왔습니다. 광고는 CPC 결과를 보고 다음 소재의 방향을 다시 잡습니다.</p>
         <p class="hint mono" id="hint">떠 있는 매체 위에 마우스를 올려 보세요</p>
@@ -257,26 +287,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="brands" aria-label="함께한 브랜드">
     <div class="track" id="track">
       <div class="set">
-        <span class="b">DJI</span><span class="star">✳</span>
-        <span class="b">HASSELBLAD</span><span class="star">✳</span>
-        <span class="b">GARMIN</span><span class="star">✳</span>
-        <span class="b">ARKE</span><span class="star">✳</span>
-        <span class="b">GVCU</span><span class="star">✳</span>
-        <span class="b">SKYPIXEL</span><span class="star">✳</span>
-        <span class="b">LAURASTAR<small>상세</small></span><span class="star">✳</span>
-        <span class="b">IMETEC<small>상세</small></span><span class="star">✳</span>
-        <span class="b">X-TOOL<small>제안서</small></span><span class="star">✳</span>
+        <span class="b">DJI</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">HASSELBLAD</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">GARMIN</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">ARKE</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">GVCU</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">SKYPIXEL</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">LAURASTAR<small>상세</small></span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">IMETEC<small>상세</small></span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">X-TOOL<small>제안서</small></span><span class="star" aria-hidden="true">✳</span>
       </div>
       <div class="set" aria-hidden="true">
-        <span class="b">DJI</span><span class="star">✳</span>
-        <span class="b">HASSELBLAD</span><span class="star">✳</span>
-        <span class="b">GARMIN</span><span class="star">✳</span>
-        <span class="b">ARKE</span><span class="star">✳</span>
-        <span class="b">GVCU</span><span class="star">✳</span>
-        <span class="b">SKYPIXEL</span><span class="star">✳</span>
-        <span class="b">LAURASTAR<small>상세</small></span><span class="star">✳</span>
-        <span class="b">IMETEC<small>상세</small></span><span class="star">✳</span>
-        <span class="b">X-TOOL<small>제안서</small></span><span class="star">✳</span>
+        <span class="b">DJI</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">HASSELBLAD</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">GARMIN</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">ARKE</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">GVCU</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">SKYPIXEL</span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">LAURASTAR<small>상세</small></span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">IMETEC<small>상세</small></span><span class="star" aria-hidden="true">✳</span>
+        <span class="b">X-TOOL<small>제안서</small></span><span class="star" aria-hidden="true">✳</span>
       </div>
     </div>
   </div>
@@ -417,21 +447,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           </thead>
           <tbody>
             <tr><th scope="row">DJI<small>전담 · 진행 중</small></th>
-              <td><span class="dot" title="강남 부띠끄 로고"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot half" title="매장 DID"></span></td><td><span class="dot" title="공식카페, 티스토리"></span></td><td><span class="dot" title="런칭쇼 PT"></span></td></tr>
+              <td><span class="dot" role="img" aria-label="직접 디자인: 강남 부띠끄 로고" title="강남 부띠끄 로고"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot half" role="img" aria-label="일부: 매장 DID" title="매장 DID"></span></td><td><span class="dot" role="img" aria-label="직접 디자인: 공식카페, 티스토리" title="공식카페, 티스토리"></span></td><td><span class="dot" role="img" aria-label="직접 디자인: 런칭쇼 PT" title="런칭쇼 PT"></span></td></tr>
             <tr><th scope="row">Hasselblad<small>전담 · 진행 중</small></th>
-              <td class="none">–</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="none">–</td><td><span class="dot"></span></td><td class="none">–</td></tr>
+              <td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td></tr>
             <tr><th scope="row">Garmin<small>전담 · 진행 중</small></th>
-              <td class="none">–</td><td class="none">–</td><td class="none">–</td><td><span class="dot"></span></td><td class="none">–</td><td><span class="dot" title="인스타그램, 네이버 스토어"></span></td><td class="none">–</td></tr>
+              <td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인: 인스타그램, 네이버 스토어" title="인스타그램, 네이버 스토어"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td></tr>
             <tr><th scope="row">ARKE<small>전담 · 1년</small></th>
-              <td class="none">–</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot" title="백화점 프로모션 POP"></span></td><td class="none">–</td><td><span class="dot" title="전 제품 상세, 와디즈"></span></td><td class="none">–</td></tr>
+              <td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인: 백화점 프로모션 POP" title="백화점 프로모션 POP"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인: 전 제품 상세, 와디즈" title="전 제품 상세, 와디즈"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td></tr>
             <tr><th scope="row">GVCU<small>자사 브랜드</small></th>
-              <td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="none">–</td><td class="none">–</td><td><span class="dot"></span></td><td class="none">–</td></tr>
+              <td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td></tr>
             <tr><th scope="row">Gatevision<small>회사 · 더 게이트</small></th>
-              <td><span class="dot" title="스카이픽셀 로고"></span></td><td class="none">–</td><td class="none">–</td><td class="none">–</td><td><span class="dot" title="신사 사옥"></span></td><td class="none">–</td><td><span class="dot" title="신년 PT, X-TOOL 제안서"></span></td></tr>
+              <td><span class="dot" role="img" aria-label="직접 디자인: 스카이픽셀 로고" title="스카이픽셀 로고"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인: 신사 사옥" title="신사 사옥"></span></td><td class="none"><span aria-hidden="true">–</span><span class="sr-only">없음</span></td><td><span class="dot" role="img" aria-label="직접 디자인: 신년 PT, X-TOOL 제안서" title="신년 PT, X-TOOL 제안서"></span></td></tr>
           </tbody>
         </table>
       </div>
-      <div class="legend"><span><span class="dot"></span>직접 디자인</span><span><span class="dot half"></span>일부 (매장 디지털 사이니지)</span></div>
+      <div class="legend"><span><span class="dot" aria-hidden="true"></span>직접 디자인</span><span><span class="dot half" aria-hidden="true"></span>일부 (매장 디지털 사이니지)</span></div>
     </div>
   </section>
 
@@ -867,3 +897,5 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   requestAnimationFrame(frame);
 })();
 </script>
+</body>
+</html>
