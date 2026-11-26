@@ -90,9 +90,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .spec dt{color:var(--muted)}
 .spec dd{margin:0;font-weight:500}
 .spec dl{display:contents}
-.hint{margin-top:18px;color:var(--muted);display:flex;align-items:center;gap:10px}
-.hint::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.8);opacity:.4}}
 .crop::before,.crop::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none}
 .crop::before{top:-8px;left:-8px;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
 .crop::after{bottom:-8px;right:-8px;border-bottom:1px solid var(--ink);border-right:1px solid var(--ink)}
@@ -243,7 +240,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="bigname" id="bigname" aria-label="Kong Heesung">KONG HEESUNG</div>
       <div class="hero-text">
         <p class="lede">DJI, 핫셀블라드, 가민, 아르케를 국내에 소개하며 로고와 런칭쇼부터 백화점 POP, 라이브커머스 송출 배너, 네이버·메타 광고 소재까지 <em>한 브랜드의 모든 접점</em>을 혼자 끝까지 맡아 왔습니다. 광고는 CPC 결과를 보고 다음 소재의 방향을 다시 잡습니다.</p>
-        <p class="hint mono" id="hint">떠 있는 매체 위에 마우스를 올려 보세요</p>
       </div>
       <dl class="spec crop" aria-label="요약">
         <div><dt class="mono">Position</dt><dd>브랜딩 디자이너 · 전담 브랜드 리드</dd></div>
@@ -863,7 +859,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
   const ready = document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve();
   ready.then(() => { try { initHero(); } catch(e){ console.warn(e); } try { initWave(); } catch(e){ console.warn(e); } });
-  if (!fine) document.getElementById('hint').textContent = '천천히 스크롤해 보세요';
   requestAnimationFrame(frame);
 })();
 </script>
