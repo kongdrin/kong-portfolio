@@ -1,0 +1,869 @@
+<title>공희성 Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a print-production sheet come alive. Every medium she ships (POP, X-banner, DID, ad, sign)
+   floats as a 3D proof around a registration mark; the page reacts to the pointer like a light table. */
+:root{
+  --paper:#EEF0EE; --sheet:#F8F9F8; --ink:#15171A; --muted:#5D636B; --rule:#C9CDCF;
+  --accent:#2438D6; --accent-ink:#FFFFFF; --ph:#E2E5E4; --ph-line:#B7BCBE;
+  --display:"Archivo","IBM Plex Sans KR",system-ui,sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --step-0:1rem; --step-1:1.2rem; --step-2:1.6rem; --step-3:2.4rem;
+  --max:1240px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1114; --sheet:#171A1E; --ink:#E9ECEB; --muted:#9AA1A8; --rule:#2B2F35;
+    --accent:#7C8CFF; --accent-ink:#0D0F14; --ph:#1D2126; --ph-line:#3A4047; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1114; --sheet:#171A1E; --ink:#E9ECEB; --muted:#9AA1A8; --rule:#2B2F35;
+  --accent:#7C8CFF; --accent-ink:#0D0F14; --ph:#1D2126; --ph-line:#3A4047; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.7;
+  word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:720px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{margin:0}
+
+/* custom cursor (fine pointers only) */
+html.has-cursor, html.has-cursor *{cursor:none!important}
+.cursor{position:fixed;left:0;top:0;z-index:100;pointer-events:none;display:none}
+html.has-cursor .cursor{display:block}
+.c-dot,.c-ring{position:fixed;left:0;top:0;border-radius:50%;transform:translate3d(-100px,-100px,0)}
+.c-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:#fff;mix-blend-mode:difference}
+.c-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border:1px solid #fff;mix-blend-mode:difference;
+  display:flex;align-items:center;justify-content:center;transition:width .25s,height .25s,margin .25s,background .25s,border-color .25s}
+.c-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);opacity:0;transition:opacity .2s;white-space:nowrap}
+.cursor.is-link .c-ring{width:56px;height:56px;margin:-28px 0 0 -28px}
+.cursor.is-label .c-ring{width:96px;height:96px;margin:-48px 0 0 -48px;background:var(--accent);border-color:var(--accent);mix-blend-mode:normal}
+.cursor.is-label .c-label{opacity:1}
+.cursor.is-label .c-dot{opacity:0}
+
+/* scroll progress */
+.progress{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:2px;z-index:11;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 80%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.top .mark{font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 110;letter-spacing:.02em;text-decoration:none;display:inline-block}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:999px;display:inline-block;transition:color .2s,background .2s}
+.top nav a:hover{color:var(--ink);background:var(--sheet)}
+@media (max-width:560px){.top nav a:not(.keep){display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
+#hero-canvas{position:absolute;inset:0;z-index:0}
+#hero-canvas canvas{display:block;width:100%!important;height:100%!important}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(56px,9vw,120px) 48px;pointer-events:none}
+.hero .wrap > *{pointer-events:auto}
+.hero-text{max-width:640px}
+.eyebrow{color:var(--accent);display:flex;gap:10px;align-items:center;margin-bottom:22px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.hero h1{font-weight:700;font-size:clamp(1.9rem,4.4vw,3.4rem);line-height:1.22;letter-spacing:-.025em}
+.bigname{display:flex;flex-wrap:wrap;margin-top:18px;font-family:var(--display);font-weight:700;
+  font-size:clamp(2.4rem,10vw,8.8rem);line-height:.9;letter-spacing:-.01em;color:var(--ink);user-select:none}
+.bigname .sp{width:.28em}
+.bigname span.l{display:inline-block;font-variation-settings:"wdth" 92,"wght" 640;will-change:font-variation-settings}
+.bigname .word{display:inline-flex;white-space:nowrap}
+.bigname .word:first-child{color:var(--accent)}
+.hero .lede{margin-top:28px;font-size:var(--step-1);max-width:34em;background:color-mix(in srgb,var(--paper) 70%,transparent);backdrop-filter:blur(2px)}
+.hero .lede em{font-style:normal;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 30%,transparent) 0)}
+.spec{margin-top:44px;border:1px solid var(--rule);background:color-mix(in srgb,var(--sheet) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 26px;position:relative}
+.spec div{display:grid;gap:2px;min-width:0}
+.spec dt{color:var(--muted)}
+.spec dd{margin:0;font-weight:500}
+.spec dl{display:contents}
+.hint{margin-top:18px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.hint::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.8);opacity:.4}}
+.crop::before,.crop::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none}
+.crop::before{top:-8px;left:-8px;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+.crop::after{bottom:-8px;right:-8px;border-bottom:1px solid var(--ink);border-right:1px solid var(--ink)}
+
+/* marquee */
+.brands{border-bottom:1px solid var(--rule);overflow:hidden;padding-block:22px;background:var(--sheet)}
+.track{display:flex;width:max-content;will-change:transform}
+.track .set{display:flex;gap:56px;padding-right:56px;align-items:baseline}
+.track .b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 120;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:.01em;white-space:nowrap;transition:color .2s,font-variation-settings .35s}
+.track .b:hover{color:var(--accent);font-variation-settings:"wdth" 70}
+.track .b small{font-family:var(--body);font-weight:500;font-size:.8rem;color:var(--muted);margin-left:8px;letter-spacing:0}
+.track .star{color:var(--accent);font-family:var(--mono);font-size:1.2rem}
+@media (prefers-reduced-motion: reduce){.track{width:auto}.track .set{flex-wrap:wrap;gap:14px 40px;padding-inline:16px}.track .set[aria-hidden]{display:none}}
+
+/* sections */
+section.block{padding-block:clamp(64px,9vw,112px);position:relative}
+.sec-head{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:48px}
+@media (min-width:900px){.sec-head{grid-template-columns:1fr 1.4fr;align-items:end}}
+.sec-head h2{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 120;font-size:var(--step-3);line-height:1;text-transform:uppercase}
+.sec-head h2 .ko{display:block;font-family:var(--body);text-transform:none;font-size:.45em;font-weight:600;letter-spacing:0;color:var(--muted);margin-top:10px}
+.sec-head p{color:var(--muted);max-width:40em}
+
+/* case */
+.case{display:grid;grid-template-columns:1fr;gap:36px;padding-block:56px;border-top:1px solid var(--rule)}
+.case:first-of-type{border-top:0;padding-top:0}
+@media (min-width:980px){.case{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px}}
+.case-meta{display:flex;flex-direction:column;gap:22px;min-width:0}
+@media (min-width:980px){.case-meta{position:sticky;top:96px;align-self:start}}
+.tag{display:inline-flex;gap:8px;align-items:center;color:var(--accent)}
+.tag i{font-style:normal;color:var(--muted)}
+.case h3{font-size:var(--step-2);line-height:1.3;font-weight:700;letter-spacing:-.015em}
+.case h3 .brand{display:block;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 125;font-size:clamp(2.4rem,6vw,4.2rem);line-height:.95;margin-bottom:12px;text-transform:uppercase;transition:font-variation-settings .6s cubic-bezier(.2,.8,.2,1),color .3s}
+.case:hover h3 .brand{font-variation-settings:"wdth" 64;color:var(--accent)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;padding-top:18px;border-top:1px solid var(--rule)}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;padding:3px 10px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.deliv{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.deliv li{display:grid;grid-template-columns:96px 1fr;gap:12px;padding-bottom:8px;border-bottom:1px dashed var(--rule)}
+.deliv li span:first-child{color:var(--muted)}
+.result{background:var(--ink);color:var(--paper);padding:18px 20px}
+.result .mono{color:color-mix(in srgb,var(--paper) 65%,transparent);display:block;margin-bottom:6px}
+
+/* placeholders with 3D tilt */
+.plate{display:grid;gap:14px;grid-template-columns:repeat(6,minmax(0,1fr));min-width:0;perspective:1100px}
+.ph{margin:0;position:relative;background:var(--ph);border:1px solid var(--ph-line);display:flex;align-items:flex-end;
+  padding:12px;overflow:hidden;max-width:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;--gx:50%;--gy:50%}
+.ph::before{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - .5px),var(--ph-line) 50%,transparent calc(50% + .5px));opacity:.55}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(circle at var(--gx) var(--gy),color-mix(in srgb,var(--accent) 30%,transparent),transparent 55%)}
+.ph.tilting{transition:transform .08s linear,box-shadow .3s;box-shadow:0 30px 60px -30px color-mix(in srgb,var(--ink) 45%,transparent)}
+.ph.tilting::after{opacity:1}
+.ph figcaption{position:relative;z-index:1;display:flex;flex-direction:column;gap:2px;background:var(--sheet);padding:6px 9px;border:1px solid var(--ph-line);max-width:100%;transform:translateZ(30px)}
+.ph figcaption b{font-weight:600;font-size:.86rem}
+.ph figcaption span{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.w6{grid-column:span 6}.w4{grid-column:span 4}.w3{grid-column:span 3}.w2{grid-column:span 2}
+.r169{aspect-ratio:16/9}.r43{aspect-ratio:4/3}.r11{aspect-ratio:1/1}.r45{aspect-ratio:4/5}.r13{aspect-ratio:1/2.2}.r32{aspect-ratio:3/2}
+@media (max-width:640px){.w4,.w3{grid-column:span 6}.w2{grid-column:span 3}}
+
+/* index matrix */
+.matrix-wrap{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+table.matrix{border-collapse:collapse;width:100%;min-width:720px;font-size:.92rem}
+.matrix th,.matrix td{padding:14px 16px;border-bottom:1px solid var(--rule);text-align:center;transition:background .2s}
+.matrix thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;font-weight:500;color:var(--muted);text-transform:uppercase;vertical-align:bottom}
+.matrix thead th small{display:block;font-family:var(--body);text-transform:none;letter-spacing:0;font-size:.78rem;color:var(--ink);font-weight:600;margin-top:2px}
+.matrix tbody th{text-align:left;font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 112;white-space:nowrap}
+.matrix tbody th small{display:block;font-family:var(--body);font-weight:400;font-size:.76rem;color:var(--muted)}
+.matrix tr:last-child th,.matrix tr:last-child td{border-bottom:0}
+.matrix tbody tr:hover th,.matrix tbody tr:hover td{background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--accent);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.matrix tbody tr:hover .dot{transform:scale(1.6)}
+.dot.half{background:transparent;border:1.5px solid var(--accent)}
+.none{color:var(--rule)}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:.85rem}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+
+/* selected works */
+.works{display:grid;gap:14px;grid-template-columns:1fr;perspective:1200px}
+@media (min-width:760px){.works{grid-template-columns:1fr 1fr}}
+@media (min-width:1080px){.works{grid-template-columns:repeat(3,1fr)}}
+.work{padding:24px;border:1px solid var(--rule);background:var(--sheet);display:grid;gap:12px;align-content:start;min-width:0;position:relative;overflow:hidden;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .3s;--gx:50%;--gy:50%}
+.work::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx) var(--gy),color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%)}
+.work.tilting{transition:transform .08s linear;border-color:var(--accent)}
+.work.tilting::after{opacity:1}
+.work h4{font-size:var(--step-1);font-weight:700}
+.work p{color:var(--muted)}
+.work ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+
+/* approach with 3D wave */
+.approach{background:var(--ink);color:var(--paper);overflow:hidden}
+#wave-canvas{position:absolute;inset:0;z-index:0;opacity:.9}
+#wave-canvas canvas{display:block;width:100%!important;height:100%!important}
+.approach .wrap{position:relative;z-index:1}
+.approach .sec-head p,.approach .sec-head h2 .ko{color:color-mix(in srgb,var(--paper) 72%,transparent)}
+.flow{display:grid;grid-template-columns:1fr;gap:14px;margin:0;padding:0}
+@media (min-width:860px){.flow{grid-template-columns:repeat(4,1fr)}}
+.flow li{list-style:none;padding:22px;border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);
+  background:color-mix(in srgb,var(--ink) 70%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;gap:10px;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.flow li:hover{transform:translateY(-6px);border-color:var(--accent)}
+.flow .mono{color:var(--accent)}
+.flow h4{font-size:var(--step-1)}
+.flow p{color:color-mix(in srgb,var(--paper) 80%,transparent);font-size:.95rem}
+.note{margin-top:36px;font-size:.9rem;color:color-mix(in srgb,var(--paper) 62%,transparent)}
+
+/* contact */
+.contact{padding-block:clamp(64px,9vw,110px)}
+.contact h2{font-size:var(--step-3);line-height:1.25;font-weight:700;letter-spacing:-.02em;max-width:18em}
+.contact-grid{margin-top:40px;display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:760px){.contact-grid{grid-template-columns:repeat(3,1fr)}}
+.ci{border:1px solid var(--rule);background:var(--sheet);padding:18px 20px;display:grid;gap:4px;min-width:0}
+.ci .mono{color:var(--muted)}
+.ci .v{font-weight:600;overflow-wrap:anywhere}
+.ci .v.todo{color:var(--muted);font-weight:500}
+footer{border-top:1px solid var(--rule);padding-block:22px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+</style>
+
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><div class="c-ring"><span class="c-label"></span></div><div class="c-dot"></div></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" data-magnet>KONG HEESUNG</a>
+    <nav class="mono" aria-label="섹션">
+      <a class="keep" href="#work" data-magnet>Work</a>
+      <a href="#index" data-magnet>Index</a>
+      <a href="#more" data-magnet>Selected</a>
+      <a href="#approach" data-magnet>Approach</a>
+      <a class="keep" href="#contact" data-magnet>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div id="hero-canvas" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-text">
+        <div class="eyebrow mono">Brand Designer · 7 Years</div>
+        <h1>공식 수입 브랜드가<br>한국에 처음 놓이는 순간을<br>디자인합니다.</h1>
+      </div>
+      <div class="bigname" id="bigname" aria-label="Kong Heesung">KONG HEESUNG</div>
+      <div class="hero-text">
+        <p class="lede">DJI, 핫셀블라드, 가민, 아르케를 국내에 소개하며 로고와 런칭쇼부터 백화점 POP, 라이브커머스 송출 배너, 네이버·메타 광고 소재까지 <em>한 브랜드의 모든 접점</em>을 혼자 끝까지 맡아 왔습니다. 광고는 CPC 결과를 보고 다음 소재의 방향을 다시 잡습니다.</p>
+        <p class="hint mono" id="hint">떠 있는 매체 위에 마우스를 올려 보세요</p>
+      </div>
+      <dl class="spec crop" aria-label="요약">
+        <div><dt class="mono">Position</dt><dd>브랜딩 디자이너 · 전담 브랜드 리드</dd></div>
+        <div><dt class="mono">Company</dt><dd>게이트비젼 · 공식 수입사</dd></div>
+        <div><dt class="mono">Brands</dt><dd>DJI · 핫셀블라드 · 가민 · 아르케 · GVCU</dd></div>
+        <div><dt class="mono">Scope</dt><dd>BI · 리테일 · 공간/사인 · 웹/SNS · 광고 · PT</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="brands" aria-label="함께한 브랜드">
+    <div class="track" id="track">
+      <div class="set">
+        <span class="b">DJI</span><span class="star">✳</span>
+        <span class="b">HASSELBLAD</span><span class="star">✳</span>
+        <span class="b">GARMIN</span><span class="star">✳</span>
+        <span class="b">ARKE</span><span class="star">✳</span>
+        <span class="b">GVCU</span><span class="star">✳</span>
+        <span class="b">SKYPIXEL</span><span class="star">✳</span>
+        <span class="b">LAURASTAR<small>상세</small></span><span class="star">✳</span>
+        <span class="b">IMETEC<small>상세</small></span><span class="star">✳</span>
+        <span class="b">X-TOOL<small>제안서</small></span><span class="star">✳</span>
+      </div>
+      <div class="set" aria-hidden="true">
+        <span class="b">DJI</span><span class="star">✳</span>
+        <span class="b">HASSELBLAD</span><span class="star">✳</span>
+        <span class="b">GARMIN</span><span class="star">✳</span>
+        <span class="b">ARKE</span><span class="star">✳</span>
+        <span class="b">GVCU</span><span class="star">✳</span>
+        <span class="b">SKYPIXEL</span><span class="star">✳</span>
+        <span class="b">LAURASTAR<small>상세</small></span><span class="star">✳</span>
+        <span class="b">IMETEC<small>상세</small></span><span class="star">✳</span>
+        <span class="b">X-TOOL<small>제안서</small></span><span class="star">✳</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected Cases<span class="ko">대표 프로젝트 4</span></h2>
+        <p>브랜드 하나를 온라인과 오프라인, 공간까지 끝까지 맡은 작업만 골랐습니다. 각 케이스는 맡은 범위, 만든 것, 그 결과로 무엇이 열렸는지 순서로 정리했습니다.</p>
+      </div>
+
+      <article class="case" id="case-dji">
+        <div class="case-meta">
+          <div class="tag mono">Case A <i>/ 전담 브랜드 · 진행 중</i></div>
+          <h3><span class="brand">DJI</span>런칭쇼에서 백화점 매대까지, 한 목소리로</h3>
+          <p>DJI 국내 전담 디자이너로 런칭쇼 현장물, 강남 부띠끄 로고, 월간 백화점 POP, 매장 DID, 면세 잡지 수록까지 맡았습니다. 채널마다 다른 크기와 매체에서도 같은 브랜드로 보이도록 톤을 하나로 묶는 것이 핵심이었습니다.</p>
+          <dl class="facts">
+            <dt>역할</dt><dd>전담 디자이너 · 기획 참여</dd>
+            <dt>접점</dt><dd><div class="chips"><span class="chip">런칭쇼</span><span class="chip">로고</span><span class="chip">POP</span><span class="chip">DID</span><span class="chip">면세 매거진</span><span class="chip">커뮤니티</span></div></dd>
+          </dl>
+          <ul class="deliv">
+            <li><span>런칭쇼</span><span>안내문, X배너, 폼보드, 발표 PT</span></li>
+            <li><span>BI</span><span>DJI 강남 부띠끄 로고</span></li>
+            <li><span>리테일</span><span>정기 워크샵·플래너 POP, 월간 백화점 프로모션 POP, 매장 DID</span></li>
+            <li><span>출판</span><span>온라인 면세점·기내 면세 잡지 지면</span></li>
+            <li><span>커뮤니티</span><span>스카이픽셀 DJI 공식카페 이벤트 및 전체 디자인, 티스토리 바이럴</span></li>
+          </ul>
+          <div class="result"><span class="mono">Outcome</span>런칭쇼부터 매장, 면세 지면, 공식카페까지 DJI의 국내 접점을 한 사람이 일관된 톤으로 운영</div>
+        </div>
+        <div class="plate">
+          <figure class="ph w6 r169" data-slot="dji-01"><figcaption><b>런칭쇼 현장 전경</b><span>Image · 16:9 · 대표컷</span></figcaption></figure>
+          <figure class="ph w2 r13" data-slot="dji-02"><figcaption><b>런칭쇼 X배너</b><span>세로형</span></figcaption></figure>
+          <figure class="ph w4 r43" data-slot="dji-03"><figcaption><b>강남 부띠끄 로고</b><span>Logo · 적용 목업</span></figcaption></figure>
+          <figure class="ph w3 r45" data-slot="dji-04"><figcaption><b>월간 백화점 POP</b><span>Image · 4:5</span></figcaption></figure>
+          <figure class="ph w3 r45" data-slot="dji-05"><figcaption><b>매장 DID 화면</b><span>Image · 4:5</span></figcaption></figure>
+          <figure class="ph w6 r32" data-slot="dji-06"><figcaption><b>면세 잡지 지면</b><span>Spread · 3:2</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case" id="case-gvcu">
+        <div class="case-meta">
+          <div class="tag mono">Case B <i>/ 자사 브랜드 구축</i></div>
+          <h3><span class="brand">GVCU</span>로고 한 장에서 큐레이션몰이 열리기까지</h3>
+          <p>자사 큐레이션 브랜드 GVCU를 처음부터 세웠습니다. 로고를 만들고, 온라인 몰의 초기 플로우와 웹디자인을 셋팅하고, 개발팀과 테마 프로모션 페이지를 함께 기획했습니다. 인스타그램 이벤트와 SNS 기획까지 디자인과 운영을 한 번에 맡았습니다.</p>
+          <dl class="facts">
+            <dt>역할</dt><dd>BI 디자인 · 웹 초기 설계 · SNS 올인원</dd>
+            <dt>협업</dt><dd>개발팀 (기획 페이지 공동 진행)</dd>
+            <dt>접점</dt><dd><div class="chips"><span class="chip">로고</span><span class="chip">자사몰</span><span class="chip">기획전</span><span class="chip">인스타그램</span></div></dd>
+          </dl>
+          <ul class="deliv">
+            <li><span>BI</span><span>GVCU 신규 로고</span></li>
+            <li><span>웹</span><span>큐레이션몰 초기 플로우, 웹디자인, 셋팅</span></li>
+            <li><span>기획전</span><span>테마 프로모션 기획 페이지 기획 참여·디자인</span></li>
+            <li><span>SNS</span><span>인스타그램 이벤트, SNS 기획과 디자인 전담</span></li>
+          </ul>
+          <div class="result"><span class="mono">Outcome</span>브랜드 정체성, 자사몰, SNS 채널이 한 사람의 설계 아래에서 함께 열림</div>
+        </div>
+        <div class="plate">
+          <figure class="ph w6 r169" data-slot="gvcu-01"><figcaption><b>GVCU 로고 시스템</b><span>Logo · 16:9</span></figcaption></figure>
+          <figure class="ph w4 r43" data-slot="gvcu-02"><figcaption><b>자사몰 메인 화면</b><span>Web · Desktop</span></figcaption></figure>
+          <figure class="ph w2 r13" data-slot="gvcu-03"><figcaption><b>모바일 화면</b><span>Web · Mobile</span></figcaption></figure>
+          <figure class="ph w2 r11" data-slot="gvcu-04"><figcaption><b>인스타 이벤트</b><span>1:1</span></figcaption></figure>
+          <figure class="ph w2 r11" data-slot="gvcu-05"><figcaption><b>인스타 피드</b><span>1:1</span></figcaption></figure>
+          <figure class="ph w2 r11" data-slot="gvcu-06"><figcaption><b>기획전 배너</b><span>1:1</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case" id="case-gate">
+        <div class="case-meta">
+          <div class="tag mono">Case C <i>/ 공간 · 사인</i></div>
+          <h3><span class="brand">The Gate</span>신사 사옥 오픈, 건물 전체를 매체로</h3>
+          <p>더 게이트 신사 사옥 오픈에 맞춰 건물 라이트배너와 간판, 오픈 이벤트 POP, 발표 자료를 디자인했습니다. 화면과 인쇄물에 익숙한 작업을 건물 크기의 사인으로 옮기며, 멀리서 보는 거리와 조명까지 고려해야 했던 프로젝트입니다.</p>
+          <dl class="facts">
+            <dt>역할</dt><dd>공간 그래픽 · 사인 디자인 · 오픈 PT</dd>
+            <dt>접점</dt><dd><div class="chips"><span class="chip">라이트배너</span><span class="chip">간판</span><span class="chip">이벤트 POP</span><span class="chip">PT</span></div></dd>
+          </dl>
+          <ul class="deliv">
+            <li><span>사인</span><span>건물 라이트배너, 간판</span></li>
+            <li><span>이벤트</span><span>오픈 이벤트 POP</span></li>
+            <li><span>PT</span><span>사옥 오픈 발표 자료</span></li>
+          </ul>
+          <div class="result"><span class="mono">Outcome</span>사옥 외관부터 오픈 이벤트 현장까지 공간의 첫인상을 디자인</div>
+        </div>
+        <div class="plate">
+          <figure class="ph w6 r169" data-slot="gate-01"><figcaption><b>사옥 외관 · 라이트배너</b><span>Photo · 16:9 · 대표컷</span></figcaption></figure>
+          <figure class="ph w3 r43" data-slot="gate-02"><figcaption><b>간판 디테일</b><span>Photo · 4:3</span></figcaption></figure>
+          <figure class="ph w3 r43" data-slot="gate-03"><figcaption><b>오픈 이벤트 POP</b><span>Photo · 4:3</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case" id="case-launch">
+        <div class="case-meta">
+          <div class="tag mono">Case D <i>/ 국내 런칭 · 진행 중</i></div>
+          <h3><span class="brand">Hasselblad<br>&amp; Garmin</span>두 브랜드의 국내 입점, 첫 단계부터</h3>
+          <p>핫셀블라드와 가민이 국내에 들어올 때 스토어와 백화점 입점 초기 설립 단계를 맡았습니다. 매장에 처음 놓이는 그래픽, 인스타그램 이벤트, 온·오프라인 이벤트 기획에 참여했고, 가민은 네이버 스토어의 첫 구조까지 잡았습니다.</p>
+          <dl class="facts">
+            <dt>역할</dt><dd>런칭 디자인 리드 · 이벤트 기획 참여</dd>
+            <dt>접점</dt><dd><div class="chips"><span class="chip">스토어</span><span class="chip">백화점 입점</span><span class="chip">인스타그램</span><span class="chip">네이버 스토어</span></div></dd>
+          </dl>
+          <ul class="deliv">
+            <li><span>리테일</span><span>스토어·백화점 입점 초기 그래픽 (두 브랜드)</span></li>
+            <li><span>SNS</span><span>인스타그램 계정 이벤트 디자인 (두 브랜드)</span></li>
+            <li><span>이벤트</span><span>온·오프라인 이벤트 기획 참여</span></li>
+            <li><span>커머스</span><span>가민 네이버 스토어 초기 구축</span></li>
+          </ul>
+          <div class="result"><span class="mono">Outcome</span>두 글로벌 브랜드가 국내 매장과 온라인 채널에 처음 자리 잡는 과정을 함께 설계</div>
+        </div>
+        <div class="plate">
+          <figure class="ph w3 r45" data-slot="launch-01"><figcaption><b>핫셀블라드 매장</b><span>Photo · 4:5</span></figcaption></figure>
+          <figure class="ph w3 r45" data-slot="launch-02"><figcaption><b>가민 백화점 입점</b><span>Photo · 4:5</span></figcaption></figure>
+          <figure class="ph w2 r11" data-slot="launch-03"><figcaption><b>핫셀 인스타</b><span>1:1</span></figcaption></figure>
+          <figure class="ph w2 r11" data-slot="launch-04"><figcaption><b>가민 인스타</b><span>1:1</span></figcaption></figure>
+          <figure class="ph w2 r11" data-slot="launch-05"><figcaption><b>네이버 스토어</b><span>Web</span></figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="index" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Touchpoint Index<span class="ko">브랜드별로 맡은 접점</span></h2>
+        <p>브랜드마다 어디까지 맡았는지 한눈에 보이도록 정리했습니다. 공유해 주신 경력 목록 기준이며, 빠진 칸은 확인 후 채울 수 있습니다.</p>
+      </div>
+      <div class="matrix-wrap" role="region" aria-label="브랜드별 접점 표" tabindex="0">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left">Brand</th>
+              <th scope="col">Logo<small>BI</small></th>
+              <th scope="col">Ads<small>퍼포먼스 광고</small></th>
+              <th scope="col">Live<small>라이브커머스</small></th>
+              <th scope="col">Retail<small>POP·입점</small></th>
+              <th scope="col">Space<small>공간·사인</small></th>
+              <th scope="col">Web/SNS<small>웹·상세·SNS</small></th>
+              <th scope="col">Deck<small>PT·제안서</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">DJI<small>전담 · 진행 중</small></th>
+              <td><span class="dot" title="강남 부띠끄 로고"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot half" title="매장 DID"></span></td><td><span class="dot" title="공식카페, 티스토리"></span></td><td><span class="dot" title="런칭쇼 PT"></span></td></tr>
+            <tr><th scope="row">Hasselblad<small>전담 · 진행 중</small></th>
+              <td class="none">–</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="none">–</td><td><span class="dot"></span></td><td class="none">–</td></tr>
+            <tr><th scope="row">Garmin<small>전담 · 진행 중</small></th>
+              <td class="none">–</td><td class="none">–</td><td class="none">–</td><td><span class="dot"></span></td><td class="none">–</td><td><span class="dot" title="인스타그램, 네이버 스토어"></span></td><td class="none">–</td></tr>
+            <tr><th scope="row">ARKE<small>전담 · 1년</small></th>
+              <td class="none">–</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot" title="백화점 프로모션 POP"></span></td><td class="none">–</td><td><span class="dot" title="전 제품 상세, 와디즈"></span></td><td class="none">–</td></tr>
+            <tr><th scope="row">GVCU<small>자사 브랜드</small></th>
+              <td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="none">–</td><td class="none">–</td><td><span class="dot"></span></td><td class="none">–</td></tr>
+            <tr><th scope="row">Gatevision<small>회사 · 더 게이트</small></th>
+              <td><span class="dot" title="스카이픽셀 로고"></span></td><td class="none">–</td><td class="none">–</td><td class="none">–</td><td><span class="dot" title="신사 사옥"></span></td><td class="none">–</td><td><span class="dot" title="신년 PT, X-TOOL 제안서"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="legend"><span><span class="dot"></span>직접 디자인</span><span><span class="dot half"></span>일부 (매장 디지털 사이니지)</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="more" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected Works<span class="ko">선별 작업</span></h2>
+        <p>대표 케이스 밖에서 꾸준히 이어 온 작업입니다. 매달, 매 시즌 반복되는 운영 디자인이라 결과물의 양과 속도가 함께 쌓였습니다.</p>
+      </div>
+      <div class="works">
+        <div class="work" data-tilt>
+          <span class="mono tag">Performance Ads</span>
+          <h4>네이버·메타 정기 광고 소재</h4>
+          <p>CPC 결과를 보고 다음 소재의 방향을 조정하는 방식으로 운영했습니다.</p>
+          <ul><li>네이버 테마 기획 및 프로모션</li><li>네이버 GFA 광고 소재</li><li>메타 광고 소재</li><li>네이버 브랜드검색 배너</li></ul>
+        </div>
+        <div class="work" data-tilt>
+          <span class="mono tag">Live Commerce</span>
+          <h4>라이브 방송 송출물</h4>
+          <p>방송 화면과 현장 세트가 같은 그림으로 보이도록 함께 만들었습니다.</p>
+          <ul><li>네이버·카카오 라이브 송출 배너</li><li>신세계·롯데 등 유통사 라이브</li><li>현장 폼보드 패널과 광고 소재</li></ul>
+        </div>
+        <div class="work" data-tilt>
+          <span class="mono tag">Detail Page</span>
+          <h4>제품 상세페이지</h4>
+          <p>제품 구조와 사용 장면을 순서대로 설명하는 긴 호흡의 페이지입니다.</p>
+          <ul><li>로라스타 GO+ 스팀다리미</li><li>이메텍 25년 전기요·전기담요</li><li>아르케 탄산수 제조기 전 제품</li></ul>
+        </div>
+        <div class="work" data-tilt>
+          <span class="mono tag">ARKE · 1 Year</span>
+          <h4>아르케 전담과 와디즈 펀딩</h4>
+          <p>1년간 전 제품 상세와 백화점 POP를 맡고, 펀딩용 스토리페이지를 만들었습니다.</p>
+          <ul><li>탄산수 제조기 전 제품 상세페이지</li><li>와디즈 펀딩 스토리페이지</li><li>월간 백화점 프로모션 POP</li></ul>
+        </div>
+        <div class="work" data-tilt>
+          <span class="mono tag">Presentation</span>
+          <h4>기업 PT와 제안서</h4>
+          <p>디자인을 넘어 회사의 방향과 제안을 설득하는 문서를 맡았습니다.</p>
+          <ul><li>게이트비젼 신년 기업 방향성 PT (연간 담당)</li><li>X-TOOL 비즈니스 협업 제안서</li></ul>
+        </div>
+        <div class="work" data-tilt>
+          <span class="mono tag">Beyond Design</span>
+          <h4>로고와 바이럴</h4>
+          <p>필요한 곳이라면 디자인 밖의 마케팅 영역까지 넓혀 왔습니다.</p>
+          <ul><li>스카이픽셀 신규 로고</li><li>DJI 티스토리 포스팅 바이럴</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block approach" id="approach">
+    <div id="wave-canvas" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Approach<span class="ko">일하는 방식</span></h2>
+        <p>수입 브랜드 디자인은 본사의 가이드를 지키면서 한국 소비자가 실제로 반응하는 언어로 옮기는 일입니다. 그 사이를 이렇게 메웁니다.</p>
+      </div>
+      <ol class="flow">
+        <li><span class="mono">Step 1 · Read</span><h4>브랜드와 채널 읽기</h4><p>본사 가이드, 제품 특성, 이번 채널의 규격과 보는 거리를 먼저 정리합니다.</p></li>
+        <li><span class="mono">Step 2 · Shape</span><h4>하나의 톤으로 묶기</h4><p>런칭쇼, 매장, 광고, 라이브가 같은 브랜드로 보이도록 공통 규칙을 정합니다.</p></li>
+        <li><span class="mono">Step 3 · Make</span><h4>모든 크기로 펼치기</h4><p>배너 한 장부터 건물 사인까지, 매체에 맞게 직접 끝까지 만듭니다.</p></li>
+        <li><span class="mono">Step 4 · Tune</span><h4>결과 보고 다시 잡기</h4><p>광고는 CPC 결과를 보고 다음 소재의 메시지와 레이아웃을 조정합니다.</p></li>
+      </ol>
+      <p class="note">이 단계는 실제로 해 온 일을 순서로 정리한 것입니다. 성과 수치는 공개 가능한 범위가 정해지면 추가합니다.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="eyebrow mono">Contact</div>
+      <h2>브랜드가 처음 놓이는 자리부터 함께 만들 팀을 찾고 있습니다.</h2>
+      <div class="contact-grid">
+        <div class="ci"><span class="mono">Email</span><span class="v todo">이메일 입력 예정</span></div>
+        <div class="ci"><span class="mono">Phone</span><span class="v todo">연락처 입력 예정</span></div>
+        <div class="ci"><span class="mono">Resume / PDF</span><span class="v todo">이력서 링크 입력 예정</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap mono"><span>© Kong Heesung</span><span>Brand Designer Portfolio · v2</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+  const lerp = (a,b,t) => a + (b - a) * t;
+  const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+  const mouse = {x:-9999, y:-9999, nx:0, ny:0, active:false};
+  addEventListener('pointermove', e => {
+    mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+    mouse.nx = e.clientX / innerWidth * 2 - 1; mouse.ny = -(e.clientY / innerHeight * 2 - 1);
+  }, {passive:true});
+
+  /* ---------- theme change hook ---------- */
+  const themeListeners = [];
+  const fireTheme = () => themeListeners.forEach(f => f());
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fireTheme);
+  new MutationObserver(fireTheme).observe(root, {attributes:true, attributeFilter:['data-theme']});
+
+  /* ---------- cursor ---------- */
+  const cur = document.querySelector('.cursor');
+  const ring = cur.querySelector('.c-ring'), dot = cur.querySelector('.c-dot'), label = cur.querySelector('.c-label');
+  let rx = -100, ry = -100, sceneLabel = '';
+  if (fine) root.classList.add('has-cursor');
+  function cursorState(){
+    const el = document.elementFromPoint(mouse.x, mouse.y);
+    let lab = sceneLabel;
+    if (!lab && el){
+      const ph = el.closest('.ph');
+      if (ph) lab = 'Image';
+    }
+    const link = el && el.closest('a,button,.chip,.work,.matrix tbody tr,.track .b');
+    cur.classList.toggle('is-label', !!lab);
+    cur.classList.toggle('is-link', !lab && !!link);
+    if (lab) label.textContent = lab;
+  }
+
+  /* ---------- magnetic ---------- */
+  if (fine && !reduce){
+    document.querySelectorAll('[data-magnet]').forEach(el => {
+      el.style.transition = 'transform .35s cubic-bezier(.2,.8,.2,1)';
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+        el.style.transform = `translate(${dx*.28}px,${dy*.4}px)`;
+      });
+      el.addEventListener('pointerleave', () => el.style.transform = '');
+    });
+  }
+
+  /* ---------- tilt ---------- */
+  if (fine && !reduce){
+    document.querySelectorAll('.ph,[data-tilt]').forEach(el => {
+      const max = el.classList.contains('ph') ? 9 : 6;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+        el.classList.add('tilting');
+        el.style.transform = `perspective(900px) rotateX(${-py*max}deg) rotateY(${px*max}deg) translateZ(8px)`;
+        el.style.setProperty('--gx', (px+.5)*100 + '%'); el.style.setProperty('--gy', (py+.5)*100 + '%');
+      });
+      el.addEventListener('pointerleave', () => { el.classList.remove('tilting'); el.style.transform = ''; });
+    });
+  }
+
+  /* ---------- big name: variable-font proximity ---------- */
+  const big = document.getElementById('bigname');
+  const text = big.textContent; big.textContent = '';
+  const letters = [];
+  text.split(' ').forEach((word, wi) => {
+    if (wi){ const sp = document.createElement('span'); sp.className = 'sp'; big.appendChild(sp); }
+    const wEl = document.createElement('span'); wEl.className = 'word'; wEl.setAttribute('aria-hidden','true');
+    for (const ch of word){
+      const s = document.createElement('span'); s.className = 'l'; s.textContent = ch; wEl.appendChild(s);
+      letters.push({el:s, w:92, g:640});
+    }
+    big.appendChild(wEl);
+  });
+  function nameFrame(t){
+    letters.forEach((L,i) => {
+      let tw = 92 + Math.sin(t*0.0012 + i*.6) * (reduce ? 0 : 10), tg = 640;
+      if (mouse.active && fine){
+        const r = L.el.getBoundingClientRect();
+        const d = Math.hypot(mouse.x - (r.left + r.width/2), mouse.y - (r.top + r.height/2));
+        const f = clamp(1 - d/320, 0, 1);
+        tw = 92 - f * 30 + f * f * 63; // narrow at the edge of reach, widest under the cursor
+        tg = 640 + f * 160;
+      }
+      L.w = lerp(L.w, tw, .14); L.g = lerp(L.g, tg, .14);
+      L.el.style.fontVariationSettings = `"wdth" ${L.w.toFixed(1)}, "wght" ${L.g.toFixed(0)}`;
+    });
+  }
+
+  /* ---------- marquee ---------- */
+  const track = document.getElementById('track');
+  let mx = 0, vel = 0, lastY = scrollY;
+  function marqueeFrame(){
+    if (reduce) return;
+    const half = track.scrollWidth / 2;
+    const dy = scrollY - lastY; lastY = scrollY;
+    vel = lerp(vel, clamp(dy, -80, 80) * .25, .1);
+    mx -= 0.6 + vel * 1.2;
+    if (half > 0){ if (-mx >= half) mx += half; if (mx > 0) mx -= half; }
+    track.style.transform = `translate3d(${mx}px,0,0) skewX(${clamp(-vel*0.6,-12,12)}deg)`;
+  }
+
+  /* ---------- progress ---------- */
+  const bar = document.querySelector('.progress');
+  function progressFrame(){
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+  }
+
+  /* ---------- visibility helper ---------- */
+  function watch(el, cb){
+    const io = new IntersectionObserver(es => es.forEach(e => cb(e.isIntersecting)), {rootMargin:'100px'});
+    io.observe(el);
+  }
+
+  /* ---------- HERO 3D: floating media proofs around a registration mark ---------- */
+  let hero = null;
+  function initHero(){
+    if (!window.THREE) return;
+    const host = document.getElementById('hero-canvas');
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({antialias:true, alpha:true}); } catch(e){ return; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    host.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(34, 1, .1, 100);
+    camera.position.set(0, 0, 16);
+    const rig = new THREE.Group(); scene.add(rig);
+    const world = new THREE.Group(); rig.add(world);
+
+    const items = [
+      ['POP','백화점 프로모션',3/4,'3:4'], ['X-BANNER','런칭쇼 현장',1/2.6,'1:2.6'], ['DID','매장 디스플레이',9/16,'9:16'],
+      ['GFA','네이버 광고 소재',1,'1:1'], ['META','메타 광고 소재',4/5,'4:5'], ['LIVE','라이브 송출 배너',16/9,'16:9'],
+      ['LOGO','강남 부띠끄 · GVCU',1,'1:1'], ['SIGN','신사 사옥 간판',2.4,'2.4:1'], ['PT','신년 방향성 PT',16/9,'16:9'],
+      ['DETAIL','제품 상세페이지',1/2.4,'1:2.4'], ['SNS','인스타그램 이벤트',1,'1:1'], ['LAUNCH','국내 입점 그래픽',4/3,'4:3'],
+      ['BOARD','폼보드 패널',3/4,'3:4'], ['WADIZ','펀딩 스토리',4/5,'4:5'], ['BRANDSEARCH','네이버 브랜드검색',2,'2:1']
+    ];
+    const panels = [];
+    const N = items.length, R = 5;
+    items.forEach((it, i) => {
+      const ratio = it[2], A = 2.3;
+      const w = Math.sqrt(A * ratio), h = Math.sqrt(A / ratio);
+      const geo = new THREE.PlaneGeometry(w, h);
+      const mat = new THREE.MeshBasicMaterial({transparent:true, side:THREE.DoubleSide});
+      const mesh = new THREE.Mesh(geo, mat);
+      // fibonacci shell, flattened
+      const y = 1 - (i + .5) / N * 2, rad = Math.sqrt(1 - y*y), th = i * 2.39996;
+      const base = new THREE.Vector3(Math.cos(th) * rad * R * 1.15, y * R * .78, Math.sin(th) * rad * R);
+      mesh.position.copy(base);
+      mesh.userData = {base, item:it, phase:Math.random()*6.28, sway:(Math.random()-.5)*.5, scale:1};
+      world.add(mesh); panels.push(mesh);
+    });
+
+    // registration mark at center
+    const accentMat = new THREE.MeshBasicMaterial({color:0x2438d6});
+    const inkMat = new THREE.MeshBasicMaterial({color:0x15171a, transparent:true, opacity:.85});
+    const reg = new THREE.Group();
+    const ring1 = new THREE.Mesh(new THREE.TorusGeometry(1.25, .03, 12, 120), accentMat);
+    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(.7, .03, 12, 90), accentMat);
+    const barH = new THREE.Mesh(new THREE.BoxGeometry(3.6, .025, .025), inkMat);
+    const barV = new THREE.Mesh(new THREE.BoxGeometry(.025, 3.6, .025), inkMat);
+    const core = new THREE.Mesh(new THREE.SphereGeometry(.16, 24, 24), accentMat);
+    reg.add(ring1, ring2, barH, barV, core); world.add(reg);
+    const orbit = new THREE.Mesh(new THREE.TorusGeometry(R * 1.02, .008, 6, 220), inkMat.clone());
+    orbit.material.opacity = .25; orbit.rotation.x = Math.PI/2.3; world.add(orbit);
+
+    function makeTexture(it){
+      const ratio = it[2], S = 720;
+      const cw = ratio >= 1 ? S : Math.round(S * ratio), ch = ratio >= 1 ? Math.round(S / ratio) : S;
+      const c = document.createElement('canvas'); c.width = cw; c.height = ch;
+      const g = c.getContext('2d');
+      const m = Math.min(cw, ch), pad = m * .08;
+      g.fillStyle = css('--sheet'); g.fillRect(0,0,cw,ch);
+      g.strokeStyle = css('--ph-line'); g.lineWidth = Math.max(2, m*.006);
+      g.strokeRect(pad, pad, cw - pad*2, ch - pad*2);
+      g.globalAlpha = .5; g.beginPath(); g.moveTo(pad, ch - pad); g.lineTo(cw - pad, pad); g.stroke(); g.globalAlpha = 1;
+      // crop marks
+      g.strokeStyle = css('--ink'); g.lineWidth = Math.max(2, m*.007);
+      const k = pad * .7;
+      [[pad,pad,-1,-1],[cw-pad,pad,1,-1],[pad,ch-pad,-1,1],[cw-pad,ch-pad,1,1]].forEach(([x,y,sx,sy]) => {
+        g.beginPath(); g.moveTo(x + sx*pad*.15, y); g.lineTo(x + sx*(pad*.15 + k), y); g.stroke();
+        g.beginPath(); g.moveTo(x, y + sy*pad*.15); g.lineTo(x, y + sy*(pad*.15 + k)); g.stroke();
+      });
+      // labels
+      const accent = css('--accent');
+      g.fillStyle = accent; g.font = `600 ${Math.round(m*.06)}px "IBM Plex Mono", monospace`;
+      g.textBaseline = 'top'; g.fillText('RATIO ' + it[3], pad*1.5, pad*1.5);
+      let fs = m * .2; g.font = `600 ${Math.round(fs)}px "IBM Plex Mono", monospace`;
+      while (g.measureText(it[0]).width > cw - pad*3 && fs > 10){ fs -= 2; g.font = `600 ${Math.round(fs)}px "IBM Plex Mono", monospace`; }
+      g.fillStyle = css('--ink'); g.textBaseline = 'alphabetic';
+      g.fillText(it[0], pad*1.5, ch - pad*1.5 - m*.1);
+      g.fillStyle = css('--muted'); g.font = `500 ${Math.round(m*.07)}px "IBM Plex Sans KR", sans-serif`;
+      g.fillText(it[1], pad*1.5, ch - pad*1.5);
+      const tex = new THREE.CanvasTexture(c); tex.anisotropy = 4;
+      return tex;
+    }
+    function applyTheme(){
+      panels.forEach(p => { if (p.material.map) p.material.map.dispose(); p.material.map = makeTexture(p.userData.item); p.material.needsUpdate = true; });
+      accentMat.color.set(css('--accent')); inkMat.color.set(css('--ink')); orbit.material.color.set(css('--ink'));
+    }
+    applyTheme();
+    themeListeners.push(() => setTimeout(applyTheme, 30));
+
+    const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+    let w = 0, h = 0, running = true, hovered = null, rotY = 0, tX = 0, tY = 0;
+    function resize(){
+      w = host.clientWidth; h = host.clientHeight;
+      renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+      const wide = w >= 900;
+      rig.position.x = wide ? 4.6 : 0;
+      rig.position.y = wide ? .3 : 1.2;
+      rig.scale.setScalar(wide ? 1 : .72);
+      host.style.opacity = wide ? 1 : .55;
+    }
+    new ResizeObserver(resize).observe(host); resize();
+    watch(host, v => running = v);
+
+    const tmp = new THREE.Vector3();
+    hero = function(t){
+      if (!running) return;
+      const s = t * .001;
+      const r = host.getBoundingClientRect();
+      const scrollP = clamp(-r.top / Math.max(1, r.height), 0, 1);
+      if (!reduce) rotY += .0022 + scrollP * .01;
+      tX = lerp(tX, mouse.ny * .35, .05); tY = lerp(tY, mouse.nx * .7, .05);
+      rig.rotation.x = tX; world.rotation.y = rotY + tY; world.rotation.x = .12 + scrollP * .6;
+      camera.position.z = 16 + scrollP * 6;
+      reg.rotation.x = s * .4 + tX * 2; reg.rotation.y = s * .6 + tY;
+      ring2.rotation.y = s * 1.3;
+
+      // hover
+      let hit = null;
+      if (fine && mouse.x >= r.left && mouse.x <= r.right && mouse.y >= r.top && mouse.y <= r.bottom){
+        ndc.set((mouse.x - r.left) / r.width * 2 - 1, -((mouse.y - r.top) / r.height * 2 - 1));
+        ray.setFromCamera(ndc, camera);
+        const hits = ray.intersectObjects(panels, false);
+        if (hits.length) hit = hits[0].object;
+      }
+      if (hit !== hovered){ hovered = hit; sceneLabel = hit ? hit.userData.item[0] : ''; }
+
+      panels.forEach(p => {
+        const u = p.userData;
+        p.position.set(u.base.x, u.base.y + (reduce ? 0 : Math.sin(s * .9 + u.phase) * .25), u.base.z);
+        p.getWorldPosition(tmp);
+        p.lookAt(camera.position);
+        p.rotateY(u.sway + (reduce ? 0 : Math.sin(s * .6 + u.phase) * .25));
+        p.rotateZ(Math.sin(u.phase) * .12);
+        u.scale = lerp(u.scale, p === hovered ? 1.28 : 1, .12);
+        p.scale.setScalar(u.scale);
+        // depth fade
+        const depth = clamp((tmp.z + R) / (2 * R), 0, 1);
+        p.material.opacity = p === hovered ? 1 : .28 + depth * .72;
+      });
+      renderer.render(scene, camera);
+    };
+  }
+
+  /* ---------- APPROACH 3D: point-field wave that ripples under the pointer ---------- */
+  let wave = null;
+  function initWave(){
+    if (!window.THREE) return;
+    const host = document.getElementById('wave-canvas');
+    const sec = document.getElementById('approach');
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({antialias:true, alpha:true}); } catch(e){ return; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    host.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, .1, 100);
+    camera.position.set(0, 3.2, 10); camera.lookAt(0, 0, 0);
+    const COLS = 110, ROWS = 46, SP = .26;
+    const count = COLS * ROWS, pos = new Float32Array(count * 3), base = new Float32Array(count * 2);
+    for (let i = 0; i < ROWS; i++) for (let j = 0; j < COLS; j++){
+      const k = i * COLS + j;
+      base[k*2] = (j - COLS/2) * SP; base[k*2+1] = (i - ROWS/2) * SP;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const mat = new THREE.PointsMaterial({size:.05, transparent:true, opacity:.55, sizeAttenuation:true});
+    const pts = new THREE.Points(geo, mat); scene.add(pts);
+    const hotMat = new THREE.PointsMaterial({size:.09, transparent:true, opacity:.95});
+    const hotGeo = new THREE.BufferGeometry(); const hotPos = new Float32Array(count * 3);
+    hotGeo.setAttribute('position', new THREE.BufferAttribute(hotPos, 3));
+    const hot = new THREE.Points(hotGeo, hotMat); scene.add(hot);
+    function theme(){ mat.color.set(css('--paper')); hotMat.color.set(css('--accent')); }
+    theme(); themeListeners.push(() => setTimeout(theme, 30));
+
+    const plane = new THREE.Plane(new THREE.Vector3(0,1,0), 0), ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), hitP = new THREE.Vector3();
+    let running = false, mxp = 999, mzp = 999, amp = 0;
+    function resize(){
+      const w = host.clientWidth, h = host.clientHeight;
+      renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(host); resize();
+    watch(sec, v => running = v);
+    wave = function(t){
+      if (!running) return;
+      const s = reduce ? 0 : t * .001;
+      const r = host.getBoundingClientRect();
+      let inside = fine && mouse.x >= r.left && mouse.x <= r.right && mouse.y >= r.top && mouse.y <= r.bottom;
+      if (inside){
+        ndc.set((mouse.x - r.left) / r.width * 2 - 1, -((mouse.y - r.top) / r.height * 2 - 1));
+        ray.setFromCamera(ndc, camera);
+        if (ray.ray.intersectPlane(plane, hitP)){ mxp = lerp(mxp === 999 ? hitP.x : mxp, hitP.x, .15); mzp = lerp(mzp === 999 ? hitP.z : mzp, hitP.z, .15); }
+      }
+      amp = lerp(amp, inside ? 1 : 0, .05);
+      let hc = 0;
+      for (let k = 0; k < count; k++){
+        const x = base[k*2], z = base[k*2+1];
+        const d2 = (x - mxp)**2 + (z - mzp)**2;
+        const bump = Math.exp(-d2 * .35) * 1.4 * amp;
+        const y = Math.sin(x * .45 + s * 1.1) * .28 + Math.cos(z * .6 + s * .8) * .22 + bump + Math.sin(Math.sqrt(d2) * 2.2 - s * 5) * .12 * amp * Math.exp(-d2 * .05);
+        pos[k*3] = x; pos[k*3+1] = y; pos[k*3+2] = z;
+        if (bump > .35){ hotPos[hc*3] = x; hotPos[hc*3+1] = y + .01; hotPos[hc*3+2] = z; hc++; }
+      }
+      geo.attributes.position.needsUpdate = true;
+      hotGeo.setDrawRange(0, hc); hotGeo.attributes.position.needsUpdate = true;
+      pts.rotation.y = reduce ? 0 : Math.sin(s * .15) * .15;
+      hot.rotation.y = pts.rotation.y;
+      renderer.render(scene, camera);
+    };
+  }
+
+  /* ---------- main loop ---------- */
+  function frame(t){
+    // cursor
+    if (fine){
+      const k = reduce ? 1 : .2;
+      rx = lerp(rx, mouse.x, k); ry = lerp(ry, mouse.y, k);
+      dot.style.transform = `translate3d(${mouse.x}px,${mouse.y}px,0)`;
+      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
+      cursorState();
+    }
+    nameFrame(t); marqueeFrame(); progressFrame();
+    if (hero) hero(t);
+    if (wave) wave(t);
+    requestAnimationFrame(frame);
+  }
+
+  const ready = document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve();
+  ready.then(() => { try { initHero(); } catch(e){ console.warn(e); } try { initWave(); } catch(e){ console.warn(e); } });
+  if (!fine) document.getElementById('hint').textContent = '천천히 스크롤해 보세요';
+  requestAnimationFrame(frame);
+})();
+</script>
