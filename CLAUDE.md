@@ -20,3 +20,8 @@
 
 ## 미리보기
 `index.html`을 브라우저로 바로 열면 됩니다.
+
+## 배포
+- GitHub Pages 소스는 **GitHub Actions**입니다(브랜치 배포 방식 아님). `.github/workflows/pages.yml`이 `main`에 push될 때마다 저장소 루트를 배포합니다.
+- 배포 주소: https://kongdrin.github.io/kong-portfolio/
+- Settings → Pages의 Source를 "Deploy from a branch"로 바꾸지 마세요. 워크플로우를 지우면 배포가 멈춥니다.
